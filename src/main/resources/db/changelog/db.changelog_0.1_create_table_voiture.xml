@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet  id="10102010160021" author="author" context="create-schema">
+        <createTable tableName="t_voiture">
+            <column name="numero_serie" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="couleur" type="varchar(50)">
+            </column>
+            <column name="prix" type="float">
+            </column>
+            <column name="cout" type="float">
+            </column>
+            <column name="marque" type="varchar(50)">
+            </column>
+            <column name="modele" type="varchar(50)">
+            </column>
+            <column name="magasin_id" type="bigint">
+                <constraints foreignKeyName="fk_t_voiture_t_magasin"
+                             referencedTableName="t_magasin"
+                             referencedColumnNames="id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
+

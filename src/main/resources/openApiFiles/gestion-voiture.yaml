@@ -1,0 +1,184 @@
+openapi: 3.0.2
+info:
+  title: gestionVenteVoiture
+  version: 1.0.0
+paths:
+  /voiture:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VoitureDto'
+          description: get all cars sold after date
+      operationId: getAllCarsSoldAfter
+    parameters:
+      -
+        name: date
+        description: ''
+        schema:
+          format: date
+          type: string
+        in: query
+  /voiture/HighestCar:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoitureDto'
+          description: get Highest Earning Car
+      operationId: getHighestEarningCar
+  /vendeur/WorstVendeur:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VendeurDto'
+          description: Worst Vendeur
+      operationId: WorstVendeur
+  /profitMagasin:
+    get:
+      parameters:
+        -
+          name: startDate
+          description: ''
+          schema:
+            format: date
+            type: string
+          in: query
+        -
+          name: endDate
+          description: ''
+          schema:
+            format: date
+            type: string
+          in: query
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/profitMagasin'
+          description: get profit Magasin
+      operationId: getprofitMagasin
+  /bestClient:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientDTO'
+          description: get best client
+      operationId: getBestClient
+components:
+  schemas:
+    VoitureDto:
+      description: ''
+      type: object
+      properties:
+        numSerie:
+          format: int64
+          description: ''
+          type: integer
+        couleur:
+          description: ''
+          type: string
+        prix:
+          format: float
+          description: ''
+          type: number
+        cout:
+          format: float
+          description: '    '
+          type: number
+        marque:
+          description: ''
+          type: string
+        modele:
+          description: ''
+          type: string
+        magasin:
+          $ref: '#/components/schemas/MagasinDTO'
+          description: ''
+    MagasinDTO:
+      description: ''
+      type: object
+      properties:
+        id:
+          format: int64
+          description: ''
+          type: integer
+        nom:
+          description: ''
+          type: string
+        adresse:
+          description: ''
+          type: string
+        voitures:
+          description: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/VoitureDto'
+    VendeurDto:
+      description: ''
+      type: object
+      properties:
+        id:
+          format: int64
+          description: ''
+          type: integer
+        nom:
+          description: ''
+          type: string
+        prenom:
+          description: ''
+          type: string
+        adresse:
+          description: ''
+          type: string
+        salaire:
+          format: float
+          description: ''
+          type: number
+        prime:
+          format: float
+          description: ''
+          type: number
+    profitMagasin:
+      description: ''
+      type: object
+      properties:
+        magasin:
+          $ref: '#/components/schemas/MagasinDTO'
+          description: ''
+        profit:
+          format: float
+          description: ''
+          type: number
+    ClientDTO:
+      description: ''
+      type: object
+      properties:
+        id:
+          format: int64
+          description: ''
+          type: integer
+        nom:
+          description: ''
+          type: string
+        prenom:
+          description: ''
+          type: string
+        adresse:
+          description: ''
+          type: string

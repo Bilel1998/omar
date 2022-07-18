@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet  id="10102010160023" author="author" context="create-schema">
+        <createTable tableName="t_vendeur">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nom" type="varchar(50)">
+            </column>
+            <column name="prenom" type="varchar(50)">
+            </column>
+            <column name="adresse" type="varchar(50)">
+            </column>
+            <column name="salaire_fixe" type="float">
+            </column>
+            <column name="prime" type="float">
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+
+</databaseChangeLog>
+
